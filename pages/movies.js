@@ -1,5 +1,4 @@
 import { connectToDatabase } from "../util/mongodb";
-
 export default function Movies({ movies }) {
   return (
     <div>
@@ -19,17 +18,14 @@ export default function Movies({ movies }) {
     </div>
   );
 }
-
 export async function getServerSideProps() {
   const { db } = await connectToDatabase();
-
   const movies = await db
     .collection("movies")
     .find({})
     .sort({ metacritic: -1 })
-    .limit(20)
+    .limit(200)
     .toArray();
-
   return {
     props: {
       movies: JSON.parse(JSON.stringify(movies)),
