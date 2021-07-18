@@ -3,14 +3,25 @@ import 'tailwindcss/tailwind.css'
 /* This example requires Tailwind CSS v2.0+ */
 const people = [
     {
+        name: 'Yueh Han Huang',
+        title: 'Software Engineer Intern',
+        department: 'Prefect',
+        keyword: 'Admin',
+        email: 'yhhuang.minerva.kgi.edu',
+        status: 'Active',
+        image:
+          'https://images.ctfassets.net/gm98wzqotmnx/2o5cO8e0uiHa9tT8vnyz1n/afbc3bec24882e04869c7a0f24f0a4d4/yh.png',
+      },
+    {
       name: 'Jane Cooper',
       title: 'Regional Paradigm Technician',
       department: 'Optimization',
-      role: 'Admin',
+      keyword: 'Admin',
       email: 'jane.cooper@example.com',
+      status: 'Active',
       image:
         'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-    },
+    }
   ]
   
 export default function Table() {
@@ -71,10 +82,10 @@ export default function Table() {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                          Active
+                          {person.status}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.role}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.keyword}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <a href="#" className="text-indigo-600 hover:text-indigo-900">
                           Edit

@@ -17,6 +17,10 @@ export default function App(reviews) {
       {
         Header: 'Cuisine',
         accessor: 'cuisine'
+      },
+      {
+        Header: 'Key',
+        accessor: '_id'
       }
     ],
     []
@@ -60,6 +64,7 @@ export default function App(reviews) {
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map(cell => {
+                const { key, ...restCellProps } = cell.getCellProps();
                 return (
                   <td
                     {...cell.getCellProps()}
@@ -69,7 +74,9 @@ export default function App(reviews) {
                       background: 'papayawhip',
                     }}
                   >
-                    {cell.render('Cell')}
+                     <div key={key} {...restCellProps}>
+                      {cell.render('Cell')}
+                    </div>
                   </td>
                 )
               })}
@@ -82,7 +89,7 @@ export default function App(reviews) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const { db } = await connectToDatabase();
     const reviews = await db
       .collection("reviews")
